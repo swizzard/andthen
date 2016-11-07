@@ -1,0 +1,3 @@
+*.txt
+creds.json
+.stack-work/
