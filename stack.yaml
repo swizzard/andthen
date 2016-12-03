@@ -21,6 +21,7 @@ resolver: lts-7.7
 # Various formats can be used as shown in the example below.
 #
 # packages:
+#
 # - some-directory
 # - https://example.com/foo/bar/baz-0.0.2.tar.gz
 # - location:
@@ -37,10 +38,14 @@ resolver: lts-7.7
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
+- location:
+    git: https://github.com/swizzard/wordfilter.git
+    commit: 1bf8aa2c5e07a5d244d6422c5bb3cc7f897f2497 
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
-    - markov-chain-0.0.3.4
+    - tokenize-0.3.0
+    - HMarkov-1.0.0.3
 
 # Override default flag values for local packages and extra-deps
 flags: {}
@@ -60,8 +65,10 @@ extra-package-dbs: []
 # arch: x86_64
 #
 # Extra directories used by stack for building
-# extra-include-dirs: [/path/to/dir]
-# extra-lib-dirs: [/path/to/dir]
+extra-include-dirs:
+- /usr/local/opt/icu4c/include
+extra-lib-dirs:
+- /usr/local/opt/icu4c/lib
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
